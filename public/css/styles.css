@@ -11,40 +11,6 @@
     font-size: 12px;
     letter-spacing: 5px;
 }
-.xxx{
-  display: flex;
-  flex-direction: row;
-  gap:10px;
-}
-.card{
-  text-align: center;
-  border: 1px Solid #D3D3D3	;
-  padding: 10px;
-  line-height: 30px;
-}
-.checked{
-  color: #FF4D4D;
-}
-.icons{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  padding-bottom: 10px;
-}
-.bg-icons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-}
-.bg-icons:hover{
-  color: #FF4D4D;
-  cursor: pointer;
-  background-color: #D3D3D3	;
-}
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
