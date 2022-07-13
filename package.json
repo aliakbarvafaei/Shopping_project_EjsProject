@@ -1,0 +1,23 @@
+{
+  "name": "ejs-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bootstrap-icons": "^1.8.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "font-awesome": "^4.7.0",
+    "https": "^1.0.0",
+    "import": "^0.0.6",
+    "lodash": "^4.17.11",
+    "nodemon": "^2.0.19",
+    "request": "^2.88.2"
+  }
+}

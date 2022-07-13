@@ -1,0 +1,31 @@
+<% include header.ejs %>
+<div class="xxx">
+  <% for(let i=0;i<5;i++ ) {%>
+    <div class="card" style="width: 18rem;">
+      <img src=<%= postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;">
+      <div class="card-body">
+        <h4 class="card-title">Product Name</h4>
+        <h4 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h4> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
+        <svg height="20" >
+          <line x1="10" y1="12" x2="150" y2="12" style="stroke:#D3D3D3;stroke-width:2" style="position:relative;" >
+          <span style="position:absolute;margin-top:-34px;margin-left:-40px;">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <i class='fa fa-star' style='color: #D3D3D3;'></i>
+            <i class='fa fa-star' style='color: #D3D3D3;'></i>
+          </span>
+          </line>
+        </svg>
+
+        <div class="icons">
+          <span class="bg-icons"><i class='fa fa-heart-o'></i></span>
+          <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
+          <span class="bg-icons"><i class='fa fa-eye'></i></span>
+        </div>
+
+      </div>
+    </div>
+    <% } %>
+    </div>
+<% include footer.ejs %>
