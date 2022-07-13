@@ -91,9 +91,10 @@ app.get("/", function ( req , res){
   //     });
   //   });
   // }
+  //res.render("frame");
 
   setTimeout(()=>{
-    res.render("home" , {postsinf: posts });
+    res.render("frame" , {postsinf: posts });
   }, 10);
 });
 app.post("/", function(req , res){

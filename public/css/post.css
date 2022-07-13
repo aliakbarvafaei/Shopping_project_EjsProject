@@ -1,8 +1,10 @@
-.posts{
+.row_posts{
   display: flex;
   flex-direction: row;
-  gap:10px;
+  justify-content: center;
+  gap:15px;
 }
+
 .card{
   text-align: center;
   border: 1px Solid #D3D3D3	;
@@ -31,4 +33,12 @@
   color: #FF4D4D;
   cursor: pointer;
   background-color: #D3D3D3	;
+}
+.stars{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
 }
