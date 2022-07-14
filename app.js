@@ -277,7 +277,13 @@ app.get("/", function ( req , res){
   //res.render("frame");
 
   setTimeout(()=>{
-    res.render("frame" , {postsinf: posts });
+    res.render("frame" , {postsinf: posts , indexProduct: 1});
+  }, 10);
+});
+app.get("/pages/:pageid", function ( req , res){
+
+  setTimeout(()=>{
+    res.render("frame" , {postsinf: posts , indexProduct: req.params.pageid});
   }, 10);
 });
 app.post("/", function(req , res){

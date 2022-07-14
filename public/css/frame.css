@@ -23,6 +23,7 @@ p {
 .section-heading {
   font-size: 3rem;
   line-height: 1.5;
+  padding-top: 2%;
 }
 
 /* Containers */
@@ -150,13 +151,14 @@ p {
 /* Pricing Section */
 
 #pricing {
-  padding: 100px;
+  padding: 2% 2%;
 }
 
 .price-text {
   font-size: 3rem;
   line-height: 1.5;
 }
+
 
 .pricing-column {
   padding: 3% 2%;
