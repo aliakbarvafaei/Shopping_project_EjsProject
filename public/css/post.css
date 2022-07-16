@@ -6,7 +6,64 @@
   padding: 2% 6%;
 
 }
+.ToLeft {
 
+    animation: moveToLeft 1s ease-in-out;
+    animation-delay: 0ms;
+}
+@keyframes moveToLeft {
+    0% {
+        transform: translateX(5rem);
+    }
+    100% {
+        transform: translateX(-5rem);
+    }
+}
+.ToRight {
+
+    animation: moveToRight 1s ease-in-out;
+    animation-delay: 0ms;
+}
+@keyframes moveToRight {
+    0% {
+        transform: translateX(-5rem);
+    }
+    100% {
+        transform: translateX(5rem);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.fade-in-left{
+    animation: fadeIn 2s forwards,moveToLeft 1s ease-in-out;
+    animation-delay: 0ms;
+}
+.fade-out-left{
+    animation: fadeOut 1.3s forwards,moveToLeft 1s ease-in-out;
+    animation-delay: 0ms;
+}
+.fade-in-right{
+    animation: fadeIn 2s forwards,moveToRight 1s ease-in-out;
+    animation-delay: 0ms;
+}
+.fade-out-right{
+    animation: fadeOut 1.3s forwards,moveToRight 1s ease-in-out;
+    animation-delay: 0ms;
+}
 .card{
   text-align: center;
   border: 1px Solid #D3D3D3	;

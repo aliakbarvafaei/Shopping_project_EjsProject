@@ -206,16 +206,16 @@
 
     <h2 class="section-heading">A Plan for Every Dog's Needs</h2>
     <p>Simple and affordable price plans for your and your dog.</p>
-    <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+    <div id="pricing-carousel" class="carousel slide" data-ride="false">
       <div class="carousel-inner">
-        <div class="row row_posts">
+        <div class="row row_posts slider">
 
-          <% for(let i=0;i<4;i++ ) {%>
-            <div class="card col-lg-2" style="width: 13rem;">
+          <% for(let i=0;i<postsinf.length;i++ ) {%>
+            <div class="card col-lg-2 card_slider" style="width: 13rem;display: none;">
               <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
               <div class="card-body">
-                <h4 class="card-title">Product Name</h4>
-                <h4 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h4> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
+                <h5 class="card-title">Product Name</h5>
+                <h5 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h5> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
                 <span class="stars">
                   <svg height="20" >
                     <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
@@ -239,10 +239,10 @@
 
         </div>
       </div>
-      <a class="carousel-control-prev pre-button" href="#testimonial-carousel" role="button" data-slide="prev">
+      <a class="carousel-control-prev pre-button" href="#pricing-carousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon"></span>
       </a>
-      <a class="carousel-control-next next-button" href="#testimonial-carousel" role="button" data-slide="next">
+      <a class="carousel-control-next next-button" href="#pricing-carousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon"></span>
       </a>
     </div>
