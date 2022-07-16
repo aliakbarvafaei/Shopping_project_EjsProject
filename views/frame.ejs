@@ -27,7 +27,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script defer src="/js/ali.js"></script>
+  <script defer src="/js/script.js"></script>
 
 </head>
 
@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-lg-6">
-          <img class="title-image" src="images/shopping.png" alt="iphone-mockup">
+          <img class="title-image" src="/images/shopping.png" alt="iphone-mockup">
         </div>
 
       </div>
@@ -92,7 +92,7 @@
     <p>Simple and affordable price plans for your and your dog.</p>
     <div class="row row_posts">
 
-      <% for(let i=(indexProduct-1);i<(indexProduct +9);i++ ) {%>
+      <% for(let i=10*(parseInt(indexProduct)-1);i<(10*parseInt(indexProduct)) && i<postsinf.length;i++ ) {%>
         <div class="card col-lg-2" style="width: 13rem;">
           <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
           <div class="card-body">
@@ -122,14 +122,14 @@
     </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        <li class="page-item <%= statePre %>" >
+          <a class="page-link" id="page_pre" href="" tabindex="-1">Previous</a>
         </li>
-        <li class="page-item"><a class="page-link" href="/pages/1">1</a></li>
-        <li class="page-item"><a class="page-link" href="/pages/2">2</a></li>
-        <li class="page-item"><a class="page-link" href="/pages/3">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
+        <li class="page-item"><a class="page-link" id="page_1" href="/pages/1">1</a></li>
+        <li class="page-item"><a class="page-link" id="page_2" href="/pages/2">2</a></li>
+        <li class="page-item"><a class="page-link" id="page_3" href="/pages/3">3</a></li>
+        <li class="page-item <%= stateNext %>">
+          <a class="page-link" id="page_next" href="">Next</a>
         </li>
       </ul>
     </nav>
@@ -169,12 +169,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active container-fluid">
           <h2 class="testimonial-text">I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof.</h2>
-          <img class="testimonial-image" src="images/dog-img.jpg" alt="dog-profile">
+          <img class="testimonial-image" src="/images/dog-img.jpg" alt="dog-profile">
           <em>Pebbles, New York</em>
         </div>
         <div class="carousel-item container-fluid">
           <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of their life. I think.</h2>
-          <img class="testimonial-image" src="images/lady-img.jpg" alt="lady-profile">
+          <img class="testimonial-image" src="/images/lady-img.jpg" alt="lady-profile">
           <em>Beverly, Illinois</em>
         </div>
       </div>
@@ -192,10 +192,10 @@
   <!-- Press -->
 
   <section class="colored-section" id="press">
-    <img class="press-logo" src="images/techcrunch.png" alt="tc-logo">
-    <img class="press-logo" src="images/tnw.png" alt="tnw-logo">
-    <img class="press-logo" src="images/bizinsider.png" alt="biz-insider-logo">
-    <img class="press-logo" src="images/mashable.png" alt="mashable-logo">
+    <img class="press-logo" src="/images/techcrunch.png" alt="tc-logo">
+    <img class="press-logo" src="/images/tnw.png" alt="tnw-logo">
+    <img class="press-logo" src="/images/bizinsider.png" alt="biz-insider-logo">
+    <img class="press-logo" src="/images/mashable.png" alt="mashable-logo">
 
   </section>
 
