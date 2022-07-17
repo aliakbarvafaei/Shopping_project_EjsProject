@@ -370,8 +370,10 @@ app.post("/", function(req , res){
   res.redirect("/");
 });
 app.get("/home", function ( req , res){
-  res.render("home" , {postsinf: posts});
-});
+  var statePre="disabled",stateNext="";
+  setTimeout(()=>{
+    res.render("frame" , {postsinf: posts , indexProduct: 1, statePre: statePre, stateNext: stateNext});
+  }, 0);});
 app.get("/about", function ( req , res){
   res.render("about" , {textAbout: aboutContent});
 });

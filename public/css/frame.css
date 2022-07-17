@@ -32,6 +32,83 @@ p {
   padding: 7% 15%;
 }
 
+/* Navigation Bar */
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+/* Top-Header */
+
+#top-header{
+  padding: 0% 8%;
+  background-color: #1e1f29;
+}
+#top-header .navbar {
+  padding: 0;
+}
+#top-header .nav-item {
+  padding: 0 1rem;
+}
+#top-header .nav-link{
+  font-size: 0.8rem;
+  color: white;
+}
+#top-header .nav-link:hover{
+  color: #c90124 !important;
+}
+
+/* Header */
+
+#header{
+  padding: 3% 8%;
+  background-color: #15161d;
+  line-height: 0rem;
+  border-bottom: 0.2rem Solid #d10024;
+}
+#header-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:1rem;
+}
+#inputSearch {
+  width: 20rem;
+  margin-right: 0;
+  border-radius: 2rem 0 0 2rem;
+}
+#buttonSearch {
+  margin-left: 0;
+  border-radius: 0 2rem 2rem 0;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #d10024;
+}
+.rightMenu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:2rem;
+}
+.rightMenu-item{
+  width:5.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:0.3rem;
+}
+
 /* Sections */
 
 .colored-section {
@@ -41,27 +118,6 @@ p {
 
 .white-section {
   background-color: #fff;
-}
-
-/* Navigation Bar */
-
-.navbar {
-  padding: 0 0 1rem;
-}
-
-.navbar-brand {
-  font-family: "Ubuntu";
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.nav-item {
-  padding: 0 12px;
-}
-
-.nav-link {
-  font-size: 1.2rem;
-  font-family: "Montserrat-Light";
 }
 
 /* Buttons */
@@ -79,7 +135,7 @@ p {
 }
 
 #title-navbar .container-fluid{
-  padding: 1% 15% 0%;
+  padding: 1% 8% 0%;
 }
 
 /* Title Section */
@@ -91,7 +147,7 @@ p {
 }
 
 #title .container-fluid{
-  padding: 10% 15% 4%;
+  padding: 10% 9% 4%;
 }
 
 
@@ -172,11 +228,6 @@ p {
   line-height: 1.5;
 }
 
-/*
-.pricing-column {
-  padding: 3% 2%;
-} */
-
 /* CTA Section */
 
 
@@ -186,7 +237,16 @@ p {
 .social-icon {
   margin: 20px 10px;
 }
-
+@media (max-width: 1190px) and (min-width: 990px) {
+  #inputSearch{
+    width: 15rem;
+  }
+}
+@media (max-width: 490px) {
+  #inputSearch{
+    width: 10rem;
+  }
+}
 @media (max-width: 1028px) {
 
   #title {
@@ -197,4 +257,5 @@ p {
     position: static;
     transform: rotate(0);
   }
+
 }
