@@ -16,7 +16,7 @@
         transform: translateX(5rem);
     }
     100% {
-        transform: translateX(-5rem);
+        transform: translateX(-7rem);
     }
 }
 .ToRight {
@@ -29,7 +29,7 @@
         transform: translateX(-5rem);
     }
     100% {
-        transform: translateX(5rem);
+        transform: translateX(7rem);
     }
 }
 @keyframes fadeIn {
