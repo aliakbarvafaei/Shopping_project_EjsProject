@@ -3,9 +3,19 @@ if(!(window.location.href).includes("pages"))
   currentPage=1;
 var index=0;
 var numSlider= screen.width<1000? 3:4;
+var categories_item = document.querySelectorAll('.categories-item');
 var cards_Slider=document.querySelectorAll(".card_slider");
 var pageLinks=document.querySelectorAll(".page-link");
 var timer=setInterval(function () {nextSlide();}, 3000);
+
+for(let i=0;i<categories_item.length;i++){
+  categories_item[i].addEventListener('click',()=> {
+    for(let k=0;k<categories_item.length;k++){
+      categories_item[k].classList.remove('selected-category');
+    }
+    categories_item[i].classList.add('selected-category');
+  })
+}
 
 document.querySelector('.pre-button').addEventListener('click', function handleClick(event) {
   clearInterval(timer);

@@ -41,7 +41,9 @@ p {
 }
 
 
-
+.navbar{
+  padding-left: 0 !important;
+}
 .nav-link {
   font-size: 1.2rem;
   font-family: "Montserrat-Light";
@@ -63,6 +65,9 @@ p {
   font-size: 0.8rem;
   color: white;
 }
+#top-header .nav-link i{
+  color:#c90124;
+}
 #top-header .nav-link:hover{
   color: #c90124 !important;
 }
@@ -81,6 +86,11 @@ p {
   justify-content: space-between;
   align-items: center;
   gap:1rem;
+}
+.name-site{
+   font-weight:bold;
+   font-size:2.4rem;
+   color:white;
 }
 #inputSearch {
   width: 20rem;
@@ -107,6 +117,39 @@ p {
   flex-direction: column;
   justify-content: center;
   gap:0.3rem;
+  color: white;
+}
+#Cart,#wishlist{
+  font-size:0.8rem;
+}
+#togglerMenu{
+  margin-top: 0.5rem;
+}
+#MenuText{
+  color: white;
+  margin-top: 0.2rem;
+  font-size:0.8rem;
+}
+
+/* category */
+#category{
+  padding: 0% 8%;
+  border-bottom: 0.2rem Solid #e4e7ed;
+  color: Black;
+}
+.categories-item{
+  color: Black;
+  font-size: 0.9rem;
+  font-weight: lighter;
+  margin-left: 1rem;
+}
+#category .mr-auto{
+  margin-left: 0 !important;
+}
+#category .nav-link:hover,.selected-category{
+  color: #c90124 !important;
+  border-bottom: 0.15rem Solid #c90124;
+  line-height: 1rem;
 }
 
 /* Sections */
@@ -135,7 +178,7 @@ p {
 }
 
 #title-navbar .container-fluid{
-  padding: 1% 8% 0%;
+  padding: 1% 9% 0%;
 }
 
 /* Title Section */
@@ -237,7 +280,7 @@ p {
 .social-icon {
   margin: 20px 10px;
 }
-@media (max-width: 1190px) and (min-width: 990px) {
+@media (max-width: 1190px) and (min-width: 992px) {
   #inputSearch{
     width: 15rem;
   }
@@ -247,10 +290,22 @@ p {
     width: 10rem;
   }
 }
-@media (max-width: 1028px) {
-
+@media (max-width: 992px) {
   #title {
     text-align: center;
+  }
+
+  .title-image {
+    position: static;
+    transform: rotate(0);
+  }
+}
+@media (min-width: 992px) {
+  #title {
+    text-align: center;
+  }
+  #togglerMenu{
+    display: none;
   }
 
   .title-image {
