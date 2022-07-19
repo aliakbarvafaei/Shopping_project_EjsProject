@@ -155,8 +155,8 @@ p {
 /* Sections */
 
 .colored-section {
-  background-color: #ff4c68;
-  color: #fff;
+  background-color: #e4e7ed;
+  color: Black;
 }
 
 .white-section {
@@ -181,16 +181,14 @@ p {
   padding: 1% 9% 0%;
 }
 
-/* Title Section */
+/* Download-section Section */
 
-#title {
-  background-color: #ff4c68;
-  color: #fff;
-  text-align: left;
+#download-section {
+  text-align: center;
 }
 
-#title .container-fluid{
-  padding: 10% 9% 4%;
+#download-section .container-fluid{
+  padding: 4% 9% 0%;
 }
 
 
@@ -228,7 +226,7 @@ p {
 /* Testimonial Section */
 
 #testimonials {
-  background-color: #ef8172;
+  /* background-color: #ef8172; */
 }
 
 .testimonial-text {
@@ -244,7 +242,7 @@ p {
 
 
 #press {
-  background-color: #ef8172;
+  /* background-color: #ef8172; */
   padding-bottom: 3%;
 }
 
@@ -291,19 +289,12 @@ p {
   }
 }
 @media (max-width: 992px) {
-  #title {
-    text-align: center;
-  }
-
   .title-image {
     position: static;
     transform: rotate(0);
   }
 }
 @media (min-width: 992px) {
-  #title {
-    text-align: center;
-  }
   #togglerMenu{
     display: none;
   }
