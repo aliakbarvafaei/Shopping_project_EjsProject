@@ -21,11 +21,28 @@ p {
 }
 
 .section-heading {
-  font-size: 3rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   padding-top: 2%;
+  font-weight: bold;
 }
+/* Title */
 
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 18.2%;
+  color: #2b2d42;
+}
+.title .categories-item{
+  color: #8d99ae;
+}
+.title .nav-link:hover,.selected-category{
+  color: #c90124 !important;
+  border-bottom: 0.15rem Solid #c90124;
+  line-height: 1rem;
+}
 /* Containers */
 
 .container-fluid{

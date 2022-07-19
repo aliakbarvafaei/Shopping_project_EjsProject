@@ -64,11 +64,46 @@
     animation: fadeOut 1.3s forwards,moveToRight 1s ease-in-out;
     animation-delay: 0ms;
 }
+
 .card{
   text-align: center;
   border: 1px Solid #D3D3D3	;
   padding: 10px;
   line-height: 30px;
+}
+.card:hover{
+  border-color: #c90124;
+  border-width: 2px;
+}
+.div-add{
+  background-color: Black;
+  display: none;
+  padding: 4% 0%;
+  margin: -12px -17px !important;
+  border-radius: 5px !important;
+}
+.card:hover .div-add{
+  display: block;
+}
+.icon-cart{
+  display: none;
+}
+.button-cart{
+  padding: 3% 10% !important;
+  font-size: 0.8rem !important;
+  font-weight: bold !important;
+  border-radius: 2rem !important;
+  background-color: #c90124 !important;
+  border: 2px #c90124 Solid !important;
+}
+.card:hover .div-add .button-cart:hover{
+  background-color: White !important;
+  color: #c90124 !important;
+  font-weight: bold !important;
+}
+.card:hover .div-add .button-cart:hover .icon-cart{
+  color: #c90124;
+  display: inline;
 }
 .checked{
   color: #FF4D4D;
