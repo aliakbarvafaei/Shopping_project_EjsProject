@@ -145,34 +145,130 @@ const renderCartProducts= ()=>{
     for(let i=0;i<selected_products.length;i++)
     {
       var New = document.createElement("li");
-      New.innerHTML=`<img src="${selected_products[i].img}" alt="item1" />
+      New.innerHTML=`<title style="display:none;">${selected_products[i].id}</title><img src="${selected_products[i].img}" alt="item1" />
       <div class="detail-product-cart">
         <span class="item-name">${selected_products[i].title.substring(0,18)}...</span>
-        <span class="item-price"><span class="Quantity">1x</span><span class="price"> $${selected_products[i].price}</span></span>
+        <span class="item-price"><span class="Quantity">${selected_products[i].quantity}x</span><span class="price"> $${selected_products[i].price}</span></span>
+      </div>
+      <div class="plus-minus-cart">
+        <i class="fa fa-minus minus-button-cart" aria-hidden="true"></i>
+        <input type="button" disabled name="" value="${selected_products[i].quantity}" class="range-product-cart">
+        <i class="fa fa-plus plus-button-cart" aria-hidden="true"></i>
       </div>`;
       New.classList.add("item-cart");
       parent.appendChild(New);
-      sum+=parseFloat(selected_products[i].price);
+      sum+=parseFloat(selected_products[i].price*selected_products[i].quantity);
     }
     totalPrice.innerHTML=`$${sum}`;
   }
 };
 
 document.querySelector('#cart').addEventListener('click', function handleClick(event) {
-  if(document.querySelector('.container-cart').style.display=='block'){
+  if((((event.target).classList.contains('fa-shopping-cart')) || event.target.id=="Cart") && document.querySelector('.container-cart').style.display=='block'){
     document.querySelector('.container-cart').style.display='none';
   }
   else {
     renderCartProducts();
     document.querySelector('.container-cart').style.display='block';
+    document.querySelectorAll('.minus-button-cart').forEach((item, i) => {
+      item.addEventListener('click',(event)=>{
+        if(((event.target).parentElement).children[1].value==1)
+        {
+          for(let i=0;i<selected_products.length;i++)
+          {
+            if(selected_products[i].id==((((event.target).parentElement).parentElement).children[0].innerHTML))
+            {
+              selected_products.splice(i, 1);
+              break;
+            }
+          }
+        }
+        else{
+          for(let i=0;i<selected_products.length;i++)
+          {
+            if(selected_products[i].id==((((event.target).parentElement).parentElement).children[0].innerHTML)){
+              selected_products[i].quantity=parseInt(selected_products[i].quantity)-1;
+              break;
+            }
+          }
+          ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)-1;
+        }
+      });
+    });
+    document.querySelectorAll('.plus-button-cart').forEach((item, i) => {
+      item.addEventListener('click',(event)=>{
+          for(let i=0;i<selected_products.length;i++)
+          {
+            if(selected_products[i].id==((((event.target).parentElement).parentElement).children[0].innerHTML)){
+              selected_products[i].quantity=parseInt(selected_products[i].quantity)+1;
+              break;
+            }
+          }
+          ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
+      });
+    });
   }
 });
 document.querySelectorAll('.button-cart').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
-    const id_product= (((event.target).parentElement).parentElement).children[0].innerHTML;
-    const img_src= (((event.target).parentElement).parentElement).children[1].src;
-    const title_product= (((event.target).parentElement).parentElement).children[2].children[0].innerHTML;
-    const price_product= (((event.target).parentElement).parentElement).children[2].children[1].innerHTML;
-    selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
+    var x=false;
+    for(let i=0;i<selected_products.length;i++)
+    {
+      if(selected_products[i].id== (((event.target).parentElement).parentElement).children[0].innerHTML)
+      {
+        selected_products[i].quantity+=1;
+        ((event.target).parentElement).children[1].style.display="flex";
+        item.style.display="none";
+        x=true;
+        break;
+      }
+    }
+    if(x==false){
+      const id_product= (((event.target).parentElement).parentElement).children[0].innerHTML;
+      const img_src= (((event.target).parentElement).parentElement).children[1].src;
+      const title_product= (((event.target).parentElement).parentElement).children[2].children[0].innerHTML;
+      const price_product= (((event.target).parentElement).parentElement).children[2].children[1].innerHTML;
+      selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
+      ((event.target).parentElement).children[1].style.display="flex";
+      item.style.display="none";
+  }
+  });
+});
+document.querySelectorAll('.minus-button').forEach((item, i) => {
+  item.addEventListener('click',(event)=>{
+    if(((event.target).parentElement).children[1].value==1)
+    {
+      for(let i=0;i<selected_products.length;i++)
+      {
+        if(selected_products[i].id==((((event.target).parentElement).parentElement).parentElement).children[0].innerHTML){
+          selected_products.splice(i, 1);
+          break;
+        }
+      }
+      ((event.target).parentElement).parentElement.children[0].style.display="block";
+      ((event.target).parentElement).style.display="none";
+    }
+    else{
+      for(let i=0;i<selected_products.length;i++)
+      {
+        if(selected_products[i].id==((((event.target).parentElement).parentElement).parentElement).children[0].innerHTML){
+          selected_products[i].quantity=parseInt(selected_products[i].quantity)-1;
+          break;
+        }
+      }
+      ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)-1;
+    }
+  });
+});
+document.querySelectorAll('.plus-button').forEach((item, i) => {
+  item.addEventListener('click',(event)=>{
+      for(let i=0;i<selected_products.length;i++)
+      {
+        if(selected_products[i].id==((((event.target).parentElement).parentElement).parentElement).children[0].innerHTML){
+          selected_products[i].quantity=parseInt(selected_products[i].quantity)+1;
+          break;
+        }
+      }
+      ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
   });
 });
