@@ -82,7 +82,7 @@
                   <li class="item-cart">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
                     <div class="detail-product-cart">
-                      <span class="item-name">Sony dcfvfdvefvfev efcdcedc</span>
+                      <span class="item-name">Sony</span>
                       <span class="item-price"><span class="Quantity">1x</span><span class="price">$849.99</span></span>
                     </div>
                   </li>
@@ -190,9 +190,10 @@
 
       <% for(let i=10*(parseInt(indexProduct)-1);i<(10*parseInt(indexProduct)) && i<postsinf.length;i++ ) {%>
         <div class="card col-lg-2" style="width: 13rem;">
+          <title style="display:none;"><%=postsinf[i].id %></title>
           <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
           <div class="card-body">
-            <h4 class="card-title">Product Name</h4>
+            <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
             <h4 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h4> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
             <span class="stars">
                   <svg height="20" >
@@ -305,9 +306,10 @@
 
           <% for(let i=0;i<postsinf.length;i++ ) {%>
             <div class="card col-lg-2 card_slider" style="width: 13rem;display: none;">
+              <title style="display:none;"><%=postsinf[i].id %></title>
               <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
               <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
+                <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
                 <h5 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h5> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
                 <span class="stars">
                   <svg height="20" >

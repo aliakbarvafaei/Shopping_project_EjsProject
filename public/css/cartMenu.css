@@ -56,7 +56,7 @@
   gap:26px;
 }
 .detail-product-cart span{
-  
+  line-break: auto;
 }
 .Quantity{
   font-weight: normal !important;
@@ -64,7 +64,12 @@
 .price{
   padding-left: 20px;
 }
-
+.item-name{
+  cursor: pointer;
+}
+.item-name:hover{
+  color:#c90124;
+}
 .button-cart-menu {
    margin: 0 !important;
    background-color: #c90124;

@@ -7,7 +7,9 @@ var categories_item = document.querySelectorAll('.categories-item');
 var cards_Slider=document.querySelectorAll(".card_slider");
 var pageLinks=document.querySelectorAll(".page-link");
 var timer=setInterval(function () {nextSlide();}, 3000);
+var selected_products=[];
 
+// category
 for(let i=0;i<categories_item.length;i++){
   categories_item[i].addEventListener('click',()=> {
     for(let k=0;k<categories_item.length;k++){
@@ -17,6 +19,8 @@ for(let i=0;i<categories_item.length;i++){
   })
 }
 
+
+// slider
 document.querySelector('.pre-button').addEventListener('click', function handleClick(event) {
   clearInterval(timer);
   timer=setInterval(function () {nextSlide();}, 3000);;
@@ -87,7 +91,10 @@ const renderSlider = (dir) =>{
     }
   }
 };
+renderSlider("middle");
 
+
+// page number
 const renderPageNumberButton = () =>{
   if(currentPage>3)
   {
@@ -121,38 +128,51 @@ for(let i=0;i<pageLinks.length;i++){
   });
 };
 
-
 renderPageNumberButton();
-renderSlider("middle");
+
+// cart-product
+const renderCartProducts= ()=>{
+  var parent=document.querySelector('.shopping-cart-items');
+  var totalPrice=document.querySelector('.main-color-text');
+  if(selected_products.length==0)
+  {
+    parent.innerHTML="<p></p><p>There is not any Product</p>";
+    totalPrice.innerHTML='$0';
+  }
+  else{
+    parent.innerHTML="";
+    var sum=0;
+    for(let i=0;i<selected_products.length;i++)
+    {
+      var New = document.createElement("li");
+      New.innerHTML=`<img src="${selected_products[i].img}" alt="item1" />
+      <div class="detail-product-cart">
+        <span class="item-name">${selected_products[i].title.substring(0,18)}...</span>
+        <span class="item-price"><span class="Quantity">1x</span><span class="price"> $${selected_products[i].price}</span></span>
+      </div>`;
+      New.classList.add("item-cart");
+      parent.appendChild(New);
+      sum+=parseFloat(selected_products[i].price);
+    }
+    totalPrice.innerHTML=`$${sum}`;
+  }
+};
+
 document.querySelector('#cart').addEventListener('click', function handleClick(event) {
   if(document.querySelector('.container-cart').style.display=='block'){
     document.querySelector('.container-cart').style.display='none';
   }
   else {
+    renderCartProducts();
     document.querySelector('.container-cart').style.display='block';
   }
 });
-// fetch('https://fakestoreapi.com/carts',{
-//             method:"POST",
-//             body:JSON.stringify(
-//                 {
-//                     userId:50,
-//                     date:2020-02-03,
-//                     products:[{productId:5,quantity:10},{productId:1,quantity:15}]
-//                 }
-//             )
-//         })
-//             .then(res=>res.json())
-//             .then(json=>console.log(json));
-//             fetch('https://fakestoreapi.com/carts')
-//               .then(response => {
-//                 //handle response
-//                 console.log(response);
-//               })
-//               .then(data => {
-//                 //handle data
-//                 console.log(data.data);
-//               })
-//               .catch(error => {
-//                 //handle error
-//               });
+document.querySelectorAll('.button-cart').forEach((item, i) => {
+  item.addEventListener('click',(event)=>{
+    const id_product= (((event.target).parentElement).parentElement).children[0].innerHTML;
+    const img_src= (((event.target).parentElement).parentElement).children[1].src;
+    const title_product= (((event.target).parentElement).parentElement).children[2].children[0].innerHTML;
+    const price_product= (((event.target).parentElement).parentElement).children[2].children[1].innerHTML;
+    selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
+  });
+});

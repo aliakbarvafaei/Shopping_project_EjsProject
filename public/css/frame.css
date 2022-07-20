@@ -136,6 +136,9 @@ p {
   gap:0.3rem;
   color: white;
 }
+#Cart{
+  cursor: pointer;
+}
 #Cart,#wishlist{
   font-size:0.8rem;
 }
