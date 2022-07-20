@@ -124,3 +124,35 @@ for(let i=0;i<pageLinks.length;i++){
 
 renderPageNumberButton();
 renderSlider("middle");
+document.querySelector('#cart').addEventListener('click', function handleClick(event) {
+  if(document.querySelector('.container-cart').style.display=='block'){
+    document.querySelector('.container-cart').style.display='none';
+  }
+  else {
+    document.querySelector('.container-cart').style.display='block';
+  }
+});
+// fetch('https://fakestoreapi.com/carts',{
+//             method:"POST",
+//             body:JSON.stringify(
+//                 {
+//                     userId:50,
+//                     date:2020-02-03,
+//                     products:[{productId:5,quantity:10},{productId:1,quantity:15}]
+//                 }
+//             )
+//         })
+//             .then(res=>res.json())
+//             .then(json=>console.log(json));
+//             fetch('https://fakestoreapi.com/carts')
+//               .then(response => {
+//                 //handle response
+//                 console.log(response);
+//               })
+//               .then(data => {
+//                 //handle data
+//                 console.log(data.data);
+//               })
+//               .catch(error => {
+//                 //handle error
+//               });

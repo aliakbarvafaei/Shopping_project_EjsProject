@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/css/frame.css">
+  <link rel="stylesheet" href="/css/cartMenu.css">
 
 
   <!-- Font Awesome -->
@@ -71,9 +72,49 @@
             <label for="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></label>
             <div id="wishlist">Your Wishlist</div>
           </li>
-          <li class="rightMenu-item" >
+          <li class="rightMenu-item cart-menu" id="cart">
             <label for="Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
             <div id="Cart">Your Cart</div>
+            <div class="container-cart" style="display:none;">
+              <div class="shopping-cart">
+
+                <ul class="shopping-cart-items">
+                  <li class="item-cart">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                    <div class="detail-product-cart">
+                      <span class="item-name">Sony dcfvfdvefvfev efcdcedc</span>
+                      <span class="item-price"><span class="Quantity">1x</span><span class="price">$849.99</span></span>
+                    </div>
+                  </li>
+
+                  <li class="item-cart">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                    <div class="detail-product-cart">
+                      <span class="item-name">KS </span>
+                      <span class="item-price"><span class="Quantity">1x</span><span class="price">$1,249.99</span></span>
+                    </div>
+                  </li>
+
+                  <li class="item-cart">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                    <div class="detail-product-cart">
+                      <span class="item-name">Kindle</span>
+                      <span class="item-price"><span class="Quantity">1x</span><span class="price"> $129.99</span></span>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="shopping-cart-header">
+                  <i class="fa fa-shopping-cart cart-icon" style="color:#c90124;"></i>
+                  <div class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span class="main-color-text">$2,229.97</span>
+                  </div>
+                </div> <!--end shopping-cart-header -->
+                <button type="submit" class="btn button-cart-menu dark">View Cart</button>
+                <button type="submit" class="btn button-cart-menu">Checkout <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+              </div> <!--end shopping-cart -->
+            </div>
           </li>
           <li class="rightMenu-item" id="togglerMenu">
             <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo05">
