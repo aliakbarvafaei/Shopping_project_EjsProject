@@ -198,6 +198,33 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
           }
           ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)-1;
         }
+
+        /* update quantity of slider product */
+        document.querySelectorAll('.card_slider').forEach((items, i) => {
+            if(items.children[0].innerHTML==((((event.target).parentElement).parentElement).children[0].innerHTML))
+            {
+              if(parseInt(items.children[3].children[1].children[1].value)>1)
+                items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)-1;
+              else{
+                items.children[3].children[1].style.display="none";
+                items.children[3].children[0].style.display="block";
+              }
+            }
+        });
+
+        /* update quantity of main-product */
+        var post_main_product=document.querySelector('#main-products').children[2].children;
+        for(let i=0;i<post_main_product.length;i++){
+          if(post_main_product[i].children[0].innerHTML==((((event.target).parentElement).parentElement).children[0].innerHTML))
+          {
+            if(parseInt(post_main_product[i].children[3].children[1].children[1].value)>1)
+              post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)-1;
+            else{
+              post_main_product[i].children[3].children[1].style.display="none";
+              post_main_product[i].children[3].children[0].style.display="block";
+            }
+          }
+        }
       });
     });
 
@@ -212,6 +239,23 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
             }
           }
           ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
+
+          /* update quantity of slider product */
+          document.querySelectorAll('.card_slider').forEach((items, i) => {
+              if(items.children[0].innerHTML==((((event.target).parentElement).parentElement).children[0].innerHTML))
+              {
+                  items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)+1;
+              }
+          });
+
+          /* update quantity of main-product */
+          var post_main_product=document.querySelector('#main-products').children[2].children;
+          for(let i=0;i<post_main_product.length;i++){
+            if(post_main_product[i].children[0].innerHTML==((((event.target).parentElement).parentElement).children[0].innerHTML))
+            {
+                post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)+1;
+            }
+          }
       });
     });
   }
