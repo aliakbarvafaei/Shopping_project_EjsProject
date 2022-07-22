@@ -73,7 +73,7 @@
 }
 
 .card{
-  width: 13rem;
+  max-width: 13rem;
   text-align: center;
   border: 1px Solid #D3D3D3	;
   padding: 10px;

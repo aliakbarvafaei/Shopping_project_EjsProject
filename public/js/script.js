@@ -163,13 +163,18 @@ const renderCartProducts= ()=>{
   }
 };
 
+/* show and hide cart */
 document.querySelector('#cart').addEventListener('click', function handleClick(event) {
+  /* hide cart */
   if((((event.target).classList.contains('fa-shopping-cart')) || event.target.id=="cart" ||  event.target.id=="cart-icon") && document.querySelector('.container-cart').style.display=='block'){
     document.querySelector('.container-cart').style.display='none';
   }
   else {
+    /* show cart */
     renderCartProducts();
     document.querySelector('.container-cart').style.display='block';
+
+    /* minus quantity of product in cart */
     document.querySelectorAll('.minus-button-cart').forEach((item, i) => {
       item.addEventListener('click',(event)=>{
         if(((event.target).parentElement).children[1].value==1)
@@ -195,6 +200,8 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
         }
       });
     });
+
+    /* add quantity of product in cart */
     document.querySelectorAll('.plus-button-cart').forEach((item, i) => {
       item.addEventListener('click',(event)=>{
           for(let i=0;i<selected_products.length;i++)
@@ -209,8 +216,12 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
     });
   }
 });
+
+/* add product to cart */
 document.querySelectorAll('.button-addToCart').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
+
+    /* hide button-addToCart and show numbers */
     var x=false;
     for(let i=0;i<selected_products.length;i++)
     {
@@ -231,11 +242,50 @@ document.querySelectorAll('.button-addToCart').forEach((item, i) => {
       selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
       ((event.target).parentElement).children[1].style.display="flex";
       item.style.display="none";
-  }
+    }
+
+    /* if product selected in main-product then update quantity of slider product */
+    if((((event.target).parentElement).parentElement).parentElement.parentElement.id=="main-products"){
+      document.querySelectorAll('.card_slider').forEach((items, i) => {
+          if(items.children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
+          {
+            if(items.children[3].children[0].style.display!="none")
+            {
+              items.children[3].children[0].style.display="none";
+              items.children[3].children[1].style.display="flex";
+            }
+            else {
+              items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)+1;
+            }
+          }
+      });
+    }
+
+    /* if product selected in slider product then update quantity of main-product */
+    else{
+      var post_main_product=document.querySelector('#main-products').children[2].children;
+      for(let i=0;i<post_main_product.length;i++){
+        if(post_main_product[i].children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
+        {
+          if(post_main_product[i].children[3].children[0].style.display!="none")
+          {
+            post_main_product[i].children[3].children[0].style.display="none";
+            post_main_product[i].children[3].children[1].style.display="flex";
+          }
+          else {
+            post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)+1;
+          }
+        }
+      }
+    }
   });
 });
+
+/* minus quantity product */
 document.querySelectorAll('.minus-button').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
+
+    /* update quantity of product */
     if(((event.target).parentElement).children[1].value==1)
     {
       for(let i=0;i<selected_products.length;i++)
@@ -258,10 +308,45 @@ document.querySelectorAll('.minus-button').forEach((item, i) => {
       }
       ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)-1;
     }
+
+    /* if product selected in main-product then update quantity of slider product */
+    if((((event.target.parentElement).parentElement).parentElement).parentElement.parentElement.id=="main-products"){
+      document.querySelectorAll('.card_slider').forEach((items, i) => {
+          if(items.children[0].innerHTML==(((event.target.parentElement).parentElement).parentElement).children[0].innerHTML)
+          {
+            if(parseInt(items.children[3].children[1].children[1].value)>1)
+              items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)-1;
+            else {
+              items.children[3].children[0].style.display="block";
+              items.children[3].children[1].style.display="none";
+            }
+          }
+      });
+    }
+
+    /* if product selected in slider product then update quantity of main-product */
+    else{
+      var post_main_product=document.querySelector('#main-products').children[2].children;
+      for(let i=0;i<post_main_product.length;i++){
+        if(post_main_product[i].children[0].innerHTML==(((event.target.parentElement).parentElement).parentElement).children[0].innerHTML)
+        {
+          if(parseInt(post_main_product[i].children[3].children[1].children[1].value)>1)
+            post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)-1;
+          else{
+            post_main_product[i].children[3].children[1].style.display="none";
+            post_main_product[i].children[3].children[0].style.display="block";
+          }
+        }
+      }
+    }
   });
 });
+
+/* add quantity product */
 document.querySelectorAll('.plus-button').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
+
+      /* update quantity of product */
       for(let i=0;i<selected_products.length;i++)
       {
         if(selected_products[i].id==((((event.target).parentElement).parentElement).parentElement).children[0].innerHTML){
@@ -270,5 +355,26 @@ document.querySelectorAll('.plus-button').forEach((item, i) => {
         }
       }
       ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
+
+      /* if product selected in main-product then update quantity of slider product */
+      if((((event.target.parentElement).parentElement).parentElement).parentElement.parentElement.id=="main-products"){
+        document.querySelectorAll('.card_slider').forEach((items, i) => {
+            if(items.children[0].innerHTML==(((event.target.parentElement).parentElement).parentElement).children[0].innerHTML)
+            {
+                items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)+1;
+            }
+        });
+      }
+
+      /* if product selected in slider product then update quantity of main-product */
+      else{
+        var post_main_product=document.querySelector('#main-products').children[2].children;
+        for(let i=0;i<post_main_product.length;i++){
+          if(post_main_product[i].children[0].innerHTML==(((event.target.parentElement).parentElement).parentElement).children[0].innerHTML)
+          {
+              post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)+1;
+          }
+        }
+      }
   });
 });
