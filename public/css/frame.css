@@ -26,23 +26,41 @@ p {
   padding-top: 2%;
   font-weight: bold;
 }
-/* Title */
+/* header-nav-section */
 
-.title{
+.header-nav-section{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0% 18.2%;
   color: #2b2d42;
 }
-.title .categories-item{
+.header-nav-section .categories-item{
   color: #8d99ae;
 }
-.title .nav-link:hover,.selected-category{
+.header-nav-section .nav-link:hover,.selected-category{
   color: #c90124 !important;
   border-bottom: 0.15rem Solid #c90124;
   line-height: 1rem;
 }
+
+/* Sections */
+
+.colored-section {
+  background-color: #e4e7ed;
+  color: Black;
+}
+
+.white-section {
+  background-color: #fff;
+}
+
+/* Buttons */
+
+.download-button {
+  margin: 5% 3% 5% 0;
+}
+
 /* Containers */
 
 .container-fluid{
@@ -136,17 +154,15 @@ p {
   gap:0.3rem;
   color: white;
 }
-#Cart{
-  cursor: pointer;
-}
-#Cart,#wishlist{
+#cart-icon,#wishlist{
   font-size:0.8rem;
   word-break: break-all;
+  cursor: pointer;
 }
 #togglerMenu{
   margin-top: 0.5rem;
 }
-#MenuText{
+#menuText{
   color: white;
   margin-top: 0.2rem;
   font-size:0.8rem;
@@ -173,22 +189,6 @@ p {
   line-height: 1rem;
 }
 
-/* Sections */
-
-.colored-section {
-  background-color: #e4e7ed;
-  color: Black;
-}
-
-.white-section {
-  background-color: #fff;
-}
-
-/* Buttons */
-
-.download-button {
-  margin: 5% 3% 5% 0;
-}
 /* Title-navbar Section */
 
 #title-navbar {
@@ -212,11 +212,7 @@ p {
   padding: 4% 9% 0%;
 }
 
-
-/* Title Image */
-
 .title-image {
-  /* transform: rotate(25deg); */
   position: absolute;
   left: 10%;
 }
@@ -235,19 +231,19 @@ p {
   padding: 4.5%;
 }
 
-.icon {
+.icon-feature {
   color: #ef8172;
   margin-bottom: 1rem;
 }
 
-.icon:hover {
+.icon-feature:hover {
   color: #ff4c68;
 }
 
 /* Testimonial Section */
 
 #testimonials {
-  /* background-color: #ef8172; */
+
 }
 
 .testimonial-text {
@@ -263,7 +259,6 @@ p {
 
 
 #press {
-  /* background-color: #ef8172; */
   padding-bottom: 3%;
 }
 
@@ -279,15 +274,10 @@ p {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
 
-/* Pricing Section */
+/* slider Section */
 
-#pricing {
+#slider {
   padding: 2% 2%;
-}
-
-.price-text {
-  font-size: 3rem;
-  line-height: 1.5;
 }
 
 /* CTA Section */
@@ -295,10 +285,12 @@ p {
 
 /* Footer Section */
 
-
 .social-icon {
   margin: 20px 10px;
 }
+
+/*  responsive    */
+
 @media (max-width: 1190px) and (min-width: 992px) {
   #inputSearch{
     width: 15rem;

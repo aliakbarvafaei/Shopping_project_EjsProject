@@ -5,7 +5,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const https = require("https");
-const addPost = require("./modules/post");
 
 const posts=[{
 "id": 1,

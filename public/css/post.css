@@ -1,16 +1,5 @@
-.row_posts{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap:15px;
-  padding: 2% 6%;
+/* animations */
 
-}
-.ToLeft {
-
-    animation: moveToLeft 1s ease-in-out;
-    animation-delay: 0ms;
-}
 @keyframes moveToLeft {
     0% {
         transform: translateX(5rem);
@@ -18,11 +7,6 @@
     100% {
         transform: translateX(-7rem);
     }
-}
-.ToRight {
-
-    animation: moveToRight 1s ease-in-out;
-    animation-delay: 0ms;
 }
 @keyframes moveToRight {
     0% {
@@ -48,6 +32,29 @@
         opacity: 0;
     }
 }
+
+/* each post css*/
+
+.row_posts{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:15px;
+  padding: 2% 6%;
+
+}
+.ToLeft {
+
+    animation: moveToLeft 1s ease-in-out;
+    animation-delay: 0ms;
+}
+
+.ToRight {
+
+    animation: moveToRight 1s ease-in-out;
+    animation-delay: 0ms;
+}
+
 .fade-in-left{
     animation: fadeIn 2s forwards,moveToLeft 1s ease-in-out;
     animation-delay: 0ms;
@@ -66,6 +73,7 @@
 }
 
 .card{
+  width: 13rem;
   text-align: center;
   border: 1px Solid #D3D3D3	;
   padding: 10px;
@@ -86,14 +94,11 @@
   display: flex;
   justify-content: center;
 }
-.icon-cart{
-  display: none;
-}
 .card-title{
   font-weight: bold !important;
   display: block;
 }
-.button-cart{
+.button-addToCart{
   padding: 3% 10% !important;
   font-size: 0.8rem !important;
   font-weight: bold !important;
@@ -101,19 +106,19 @@
   background-color: #c90124 !important;
   border: 2px #c90124 Solid !important;
 }
-.card:hover .div-add .button-cart:hover{
+.card:hover .div-add .button-addToCart:hover{
   background-color: White !important;
   color: #c90124 !important;
   font-weight: bold !important;
 }
-.card:hover .div-add .button-cart:hover .icon-cart{
+.card:hover .div-add .button-addToCart:hover .icon-cart{
   color: #c90124;
   display: inline;
 }
-.checked{
+.checked-star{
   color: #FF4D4D;
 }
-.icons{
+.icons-post{
   display: flex;
   flex-direction: row;
   gap: 10px;

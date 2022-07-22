@@ -19,7 +19,7 @@
    right: 20%;
    border: 1px solid #c90124;
 }
- .shopping-cart .shopping-cart-header {
+ .shopping-cart .shopping-cart-footer {
 	 border-top: 1px solid #e8e8e8;
    display: flex;
    flex-direction: row;
@@ -59,7 +59,7 @@
 .detail-product-cart span{
   line-break: auto;
 }
-.Quantity{
+.quantity{
   font-weight: normal !important;
 }
 .price{

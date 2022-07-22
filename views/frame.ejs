@@ -73,31 +73,31 @@
             <div id="wishlist">Your Wishlist</div>
           </li>
           <li class="rightMenu-item cart-menu" id="cart">
-            <label for="Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
-            <div id="Cart">Your Cart</div>
+            <label for="cart-icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
+            <div id="cart-icon">Your Cart</div>
             <div class="container-cart" style="display:none;">
               <div class="shopping-cart">
 
                 <ul class="shopping-cart-items">
-                  
+
                 </ul>
 
-                <div class="shopping-cart-header">
+                <div class="shopping-cart-footer">
                   <i class="fa fa-shopping-cart cart-icon" style="color:#c90124;"></i>
                   <div class="shopping-cart-total">
                     <span class="lighter-text">Total:</span>
                     <span class="main-color-text">$2,229.97</span>
                   </div>
-                </div> <!--end shopping-cart-header -->
+                </div>
                 <button type="submit" class="btn button-cart-menu dark">View Cart</button>
                 <button type="submit" class="btn button-cart-menu">Checkout <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-              </div> <!--end shopping-cart -->
+              </div>
             </div>
           </li>
           <li class="rightMenu-item" id="togglerMenu">
             <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo05">
               <i class="fa fa-bars" aria-hidden="true" style="color:white;"></i>
-              <div id="MenuText">Menu</div>
+              <div id="menuText">Menu</div>
             </button>
           </li>
         </ul>
@@ -167,7 +167,7 @@
     <div class="row row_posts">
 
       <% for(let i=10*(parseInt(indexProduct)-1);i<(10*parseInt(indexProduct)) && i<postsinf.length;i++ ) {%>
-        <div class="card col-lg-2" style="width: 13rem;">
+        <div class="card col-lg-2">
           <title style="display:none;"><%=postsinf[i].id %></title>
           <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
           <div class="card-body">
@@ -177,14 +177,14 @@
                   <svg height="20" >
                     <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
                   </svg>
-                  <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked-star"></span>
+            <span class="fa fa-star checked-star"></span>
+            <span class="fa fa-star checked-star"></span>
             <i class='fa fa-star' style='color: #D3D3D3;'></i>
             <i class='fa fa-star' style='color: #D3D3D3;'></i>
             </span>
 
-            <div class="icons">
+            <div class="icons-post">
               <span class="bg-icons"><i class='fa fa-heart'></i></span>
               <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
               <span class="bg-icons"><i class='fa fa-eye'></i></span>
@@ -192,7 +192,7 @@
 
           </div>
           <div class="div-add">
-            <button type="button" name="button" class="btn btn-danger button-cart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+            <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
             <div class="plus-minus" style="display:none;">
               <i class="fa fa-minus minus-button" aria-hidden="true"></i>
               <input type="button" disabled name="" value="1" class="range-product">
@@ -258,10 +258,10 @@
   </section>
 
 
-  <!-- Pricing -->
+  <!-- slider section -->
 
-  <section class="white-section" id="pricing">
-    <div class="title" id="title">
+  <section class="white-section" id="slider">
+    <div class="header-nav-section" id="header-nav-section">
       <h5 class="section-heading">NEW PRODUCTS</h5>
       <nav class="navbar navbar-expand-lg">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo05">
@@ -288,7 +288,7 @@
         <div class="row row_posts slider">
 
           <% for(let i=0;i<postsinf.length;i++ ) {%>
-            <div class="card col-lg-2 card_slider" style="width: 13rem;display: none;">
+            <div class="card col-lg-2 card_slider" style="display: none;">
               <title style="display:none;"><%=postsinf[i].id %></title>
               <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
               <div class="card-body">
@@ -298,14 +298,14 @@
                   <svg height="20" >
                     <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
                   </svg>
-                  <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked-star"></span>
+                <span class="fa fa-star checked-star"></span>
+                <span class="fa fa-star checked-star"></span>
                 <i class='fa fa-star' style='color: #D3D3D3;'></i>
                 <i class='fa fa-star' style='color: #D3D3D3;'></i>
                 </span>
 
-                <div class="icons">
+                <div class="icons-post">
                   <span class="bg-icons"><i class='fa fa-heart'></i></span>
                   <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
                   <span class="bg-icons"><i class='fa fa-eye'></i></span>
@@ -313,7 +313,7 @@
 
               </div>
               <div class="div-add">
-                <button type="button" name="button" class="btn btn-danger button-cart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+                <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
                 <div class="plus-minus" style="display:none;">
                   <i class="fa fa-minus minus-button" aria-hidden="true"></i>
                   <input type="button" disabled name="" value="1" class="range-product">
@@ -355,19 +355,19 @@
 
       <div class="row">
         <div class="feature-box col-lg-4">
-          <i class="icon fas fa-check-circle fa-4x"></i>
+          <i class="icon-feature fas fa-check-circle fa-4x"></i>
           <h3 class="feature-title">Easy to use.</h3>
           <p>So easy to use, even your dog could do it.</p>
         </div>
 
         <div class="feature-box col-lg-4">
-          <i class="icon fas fa-bullseye fa-4x"></i>
+          <i class="icon-feature fas fa-bullseye fa-4x"></i>
           <h3 class="feature-title">Elite Clientele</h3>
           <p>We have all the dogs, the greatest dogs.</p>
         </div>
 
         <div class="feature-box col-lg-4">
-          <i class="icon fas fa-heart fa-4x"></i>
+          <i class="icon-feature fas fa-heart fa-4x"></i>
           <h3 class="feature-title">Guaranteed to work.</h3>
           <p>Find the love of your dog's life or your money back.</p>
         </div>

@@ -1,4 +1,0 @@
-110
-<!-- <% if(i>=postsinf.length || (i+1)>=postsinf.length){%>
-  <% document.querySelectorAll(".page-item")[4].disabled = true;%>
-  <%break;%> -->

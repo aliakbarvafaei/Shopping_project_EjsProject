@@ -148,7 +148,7 @@ const renderCartProducts= ()=>{
       New.innerHTML=`<title style="display:none;">${selected_products[i].id}</title><img src="${selected_products[i].img}" alt="item1" />
       <div class="detail-product-cart">
         <span class="item-name">${selected_products[i].title.substring(0,18)}...</span>
-        <span class="item-price"><span class="Quantity">${selected_products[i].quantity}x</span><span class="price"> $${selected_products[i].price}</span></span>
+        <span class="item-price"><span class="quantity">${selected_products[i].quantity}x</span><span class="price"> $${selected_products[i].price}</span></span>
       </div>
       <div class="plus-minus-cart">
         <i class="fa fa-minus minus-button-cart" aria-hidden="true"></i>
@@ -164,7 +164,7 @@ const renderCartProducts= ()=>{
 };
 
 document.querySelector('#cart').addEventListener('click', function handleClick(event) {
-  if((((event.target).classList.contains('fa-shopping-cart')) || event.target.id=="Cart") && document.querySelector('.container-cart').style.display=='block'){
+  if((((event.target).classList.contains('fa-shopping-cart')) || event.target.id=="cart" ||  event.target.id=="cart-icon") && document.querySelector('.container-cart').style.display=='block'){
     document.querySelector('.container-cart').style.display='none';
   }
   else {
@@ -209,7 +209,7 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
     });
   }
 });
-document.querySelectorAll('.button-cart').forEach((item, i) => {
+document.querySelectorAll('.button-addToCart').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
     var x=false;
     for(let i=0;i<selected_products.length;i++)
