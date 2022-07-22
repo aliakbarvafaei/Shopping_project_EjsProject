@@ -130,6 +130,9 @@ for(let i=0;i<pageLinks.length;i++){
 
 renderPageNumberButton();
 
+$(document).on('click', '.dropdown-menu', function (e) {
+  e.stopPropagation();
+});
 // cart-product
 const renderCartProducts= ()=>{
   var parent=document.querySelector('.shopping-cart-items');
@@ -164,15 +167,9 @@ const renderCartProducts= ()=>{
 };
 
 /* show and hide cart */
-document.querySelector('#cart').addEventListener('click', function handleClick(event) {
-  /* hide cart */
-  if((((event.target).classList.contains('fa-shopping-cart')) || event.target.id=="cart" ||  event.target.id=="cart-icon") && document.querySelector('.container-cart').style.display=='block'){
-    document.querySelector('.container-cart').style.display='none';
-  }
-  else {
+document.querySelector('#cart-icon').addEventListener('click', function handleClick(event) {
     /* show cart */
     renderCartProducts();
-    document.querySelector('.container-cart').style.display='block';
 
     /* minus quantity of product in cart */
     document.querySelectorAll('.minus-button-cart').forEach((item, i) => {
@@ -184,6 +181,7 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
             if(selected_products[i].id==((((event.target).parentElement).parentElement).children[0].innerHTML))
             {
               selected_products.splice(i, 1);
+              renderCartProducts();
               break;
             }
           }
@@ -197,6 +195,7 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
             }
           }
           ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)-1;
+          renderCartProducts();
         }
 
         /* update quantity of slider product */
@@ -239,6 +238,8 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
             }
           }
           ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
+          renderCartProducts();
+
 
           /* update quantity of slider product */
           document.querySelectorAll('.card_slider').forEach((items, i) => {
@@ -258,7 +259,6 @@ document.querySelector('#cart').addEventListener('click', function handleClick(e
           }
       });
     });
-  }
 });
 
 /* add product to cart */

@@ -69,29 +69,25 @@
         </form>
         <ul class="rightMenu col-lg-3 col-md-12">
           <li class="rightMenu-item" >
-            <label for="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></label>
-            <div id="wishlist">Your Wishlist</div>
+            <div id="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Your Wishlist</div>
           </li>
-          <li class="rightMenu-item cart-menu" id="cart">
-            <label for="cart-icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
-            <div id="cart-icon">Your Cart</div>
-            <div class="container-cart" style="display:none;">
-              <div class="shopping-cart">
+          <li class="rightMenu-item cart-menu dropdown" id="cart">
+            <div class="dropdown-toggle" data-toggle="dropdown" id="cart-icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your Cart</div>
+            <div class="shopping-cart dropdown-menu">
 
-                <ul class="shopping-cart-items">
+              <ul class="shopping-cart-items">
 
-                </ul>
+              </ul>
 
-                <div class="shopping-cart-footer">
-                  <i class="fa fa-shopping-cart cart-icon" style="color:#c90124;"></i>
-                  <div class="shopping-cart-total">
-                    <span class="lighter-text">Total:</span>
-                    <span class="main-color-text">$2,229.97</span>
-                  </div>
+              <div class="shopping-cart-footer">
+                <i class="fa fa-shopping-cart cart-icon" style="color:#c90124;"></i>
+                <div class="shopping-cart-total">
+                  <span class="lighter-text">Total:</span>
+                  <span class="main-color-text">$2,229.97</span>
                 </div>
-                <button type="submit" class="btn button-cart-menu dark">View Cart</button>
-                <button type="submit" class="btn button-cart-menu">Checkout <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
               </div>
+              <button type="submit" class="btn button-cart-menu dark">View Cart</button>
+              <button type="submit" class="btn button-cart-menu">Checkout <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
             </div>
           </li>
           <li class="rightMenu-item" id="togglerMenu">
