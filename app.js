@@ -43,6 +43,50 @@ app.post("/products",function (req , res) {
   });
 });
 
+var stateToast="";
+
+app.get("/login", function(req , res){
+  res.render("login" , {stateToast: stateToast});
+  stateToast="";
+});
+app.post("/login", function(req , res){
+  Users.findOne({ email: req.body.email }, function(err,findUser){
+    if(err){
+      console.log(err);
+      res.redirect("/login");
+    }
+    else{
+      if(findUser && findUser.password===req.body.password){
+        stateToast="login";
+        res.redirect("/");
+      }
+      else{
+        stateToast="errorLogin";
+        res.redirect("/login");
+      }
+    }
+  });
+});
+app.get("/signup", function(req , res){
+  res.render("signup");
+});
+app.post("/signup", function(req , res){
+  const NewUser = new Users({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
+  NewUser.save(function(err){
+    if(err){
+      res.send(err);
+    }
+    else{
+      stateToast="Register";
+      res.redirect("/login");
+      }
+  });
+});
+
 app.get("/", function ( req , res){
   // const URL ="https://fakestoreapi.com/products/";
   //
@@ -63,7 +107,9 @@ app.get("/", function ( req , res){
     }
     else{
       var statePre="disabled",stateNext="";
-      res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext});
+      res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext,
+      stateToast: stateToast});
+      stateToast="";
     }
   });
 });
@@ -98,27 +144,24 @@ app.get("/home", function ( req , res){
   });
 });
 
-app.post("/", function(req , res){
-  const title = req.body.Title;
-  const postDetail = req.body.postDetails;
-  posts.push( { title : title, detail : postDetail, limit : postDetail.substring(0,100) } );
-  res.redirect("/");
-});
-app.get("/about", function ( req , res){
-  res.render("about" , {textAbout: aboutContent});
-});
-app.get("/contact", function ( req , res){
-  res.render("contact" , {textContact: contactContent});
-});
-app.get("/posts/:titlePost", function ( req , res){
-  res.render("post" , {postsinf: posts, titlePost : req.params.titlePost});
-});
-app.get("/compose", function ( req , res){
-  res.render("compose");
-});
-
-
-
+// app.post("/", function(req , res){
+//   const title = req.body.Title;
+//   const postDetail = req.body.postDetails;
+//   posts.push( { title : title, detail : postDetail, limit : postDetail.substring(0,100) } );
+//   res.redirect("/");
+// });
+// app.get("/about", function ( req , res){
+//   res.render("about" , {textAbout: aboutContent});
+// });
+// app.get("/contact", function ( req , res){
+//   res.render("contact" , {textContact: contactContent});
+// });
+// app.get("/posts/:titlePost", function ( req , res){
+//   res.render("post" , {postsinf: posts, titlePost : req.params.titlePost});
+// });
+// app.get("/compose", function ( req , res){
+//   res.render("compose");
+// });
 
 
 

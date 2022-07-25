@@ -19,6 +19,7 @@ for(let i=0;i<categories_item.length;i++){
   })
 }
 
+$('.toast').toast("show");
 
 // slider
 document.querySelector('.pre-button').addEventListener('click', function handleClick(event) {
@@ -238,7 +239,6 @@ document.querySelector('#cart-icon').addEventListener('click', function handleCl
             }
           }
           ((event.target).parentElement).children[1].value=parseInt(((event.target).parentElement).children[1].value)+1;
-          renderCartProducts();
 
 
           /* update quantity of slider product */

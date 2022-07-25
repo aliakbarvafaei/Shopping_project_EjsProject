@@ -12,7 +12,8 @@ const productsSchema ={
 };
 
 const usersSchema ={
-  id: String,
+  name: String,
+  email: String,
   password: String
 };
 module.exports = {

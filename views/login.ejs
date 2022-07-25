@@ -1,0 +1,35 @@
+<% include header.ejs %>
+<body style="padding:5% 35%;">
+  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+    <form class="" action="/login" method="post">
+      <div class="text-center mb-3">
+        <h1>Log in</h1>
+      </div>
+
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="loginName" class="form-control" name="email"/>
+        <label class="form-label" for="loginName">Email</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="loginPassword" class="form-control" name="password"/>
+        <label class="form-label" for="loginPassword">Password</label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-block mb-4" style="background-color:#c90124;color:white;">Log in</button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? <a href="signup" style="color:#c90124;">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <% include toast.ejs %>
+
+</body>
+
+</html>
