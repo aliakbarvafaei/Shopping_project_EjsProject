@@ -6,6 +6,7 @@ const ejs = require("ejs");
 const https = require("https");
 const mongoose = require("mongoose");
 const schemas = require("./public/js/schemas");
+const md5 = require("md5");
 
 const app = express();
 
@@ -61,7 +62,7 @@ app.post("/login", function(req , res){
       res.redirect("/login");
     }
     else{
-      if(findUser && findUser.password===req.body.password){
+      if(findUser && findUser.password === md5(req.body.password)){
         stateToast="login";
         user_log=findUser;
         res.redirect("/");
@@ -92,7 +93,7 @@ app.post("/signup", function(req , res){
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        password: req.body.password
+        password: md5(req.body.password)
       });
       NewUser.save(function(err){
         if(err){
