@@ -44,8 +44,13 @@ app.post("/products",function (req , res) {
 });
 
 var stateToast="";
+var user_log="";
 
 app.get("/login", function(req , res){
+  if(user_log!=""){
+    user_log="";
+    stateToast="Logout";
+  }
   res.render("login" , {stateToast: stateToast});
   stateToast="";
 });
@@ -58,6 +63,7 @@ app.post("/login", function(req , res){
     else{
       if(findUser && findUser.password===req.body.password){
         stateToast="login";
+        user_log=findUser;
         res.redirect("/");
       }
       else{
@@ -74,6 +80,7 @@ app.post("/signup", function(req , res){
   const NewUser = new Users({
     name: req.body.name,
     email: req.body.email,
+    phone: req.body.phone,
     password: req.body.password
   });
   NewUser.save(function(err){
@@ -88,19 +95,7 @@ app.post("/signup", function(req , res){
 });
 
 app.get("/", function ( req , res){
-  // const URL ="https://fakestoreapi.com/products/";
-  //
-  // for(let i=1;i<=20;i++){
-  //   https.get( URL + i, function(response){
-  //     response.on('data', (data) => {
-  //       try {
-  //         posts.push( JSON.parse(data) );
-  //       } catch (error) {
-  //           return null;
-  //       }
-  //     });
-  //   });
-  // }
+
   Products.find(function (err , productsDetails){
     if(err){
       res.send(err);
@@ -108,7 +103,7 @@ app.get("/", function ( req , res){
     else{
       var statePre="disabled",stateNext="";
       res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext,
-      stateToast: stateToast});
+      stateToast: stateToast ,user_log: user_log});
       stateToast="";
     }
   });
@@ -139,7 +134,9 @@ app.get("/home", function ( req , res){
     }
     else{
       var statePre="disabled",stateNext="";
-     res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext});
+      res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext,
+      stateToast: stateToast ,user_log: user_log});
+      stateToast="";
     }
   });
 });
@@ -162,7 +159,19 @@ app.get("/home", function ( req , res){
 // app.get("/compose", function ( req , res){
 //   res.render("compose");
 // });
-
+// const URL ="https://fakestoreapi.com/products/";
+//
+// for(let i=1;i<=20;i++){
+//   https.get( URL + i, function(response){
+//     response.on('data', (data) => {
+//       try {
+//         posts.push( JSON.parse(data) );
+//       } catch (error) {
+//           return null;
+//       }
+//     });
+//   });
+// }
 
 
 app.listen(3000, function() {

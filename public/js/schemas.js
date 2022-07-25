@@ -14,6 +14,7 @@ const productsSchema ={
 const usersSchema ={
   name: String,
   email: String,
+  phone: String,
   password: String
 };
 module.exports = {

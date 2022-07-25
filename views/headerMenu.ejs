@@ -2,15 +2,19 @@
 <header>
   <div id="top-header">
       <nav class="navbar navbar-expand-lg navbar-dark">
+        <% if(user_log!=""){%>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#"> <i class="fa fa-phone"></i> +98-912-078-1225 <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="login"><i class="fa fa-sign-out" aria-hidden="true"></i> log out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> aliakbarvafaei.060@email.com</a>
+            <a class="nav-link" href="#"> <i class="fa fa-phone"></i> <%= user_log.phone %> <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-telegram" aria-hidden="true"></i> @aliakbar_vafaei_</a>
+            <a class="nav-link" href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= user_log.email %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-telegram" aria-hidden="true"></i> <%= user_log.name %> </a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -21,6 +25,17 @@
             <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
           </li>
         </ul>
+        <%}%>
+        <%if(user_log==""){%>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="signup"><i class="fa fa-sign-in" aria-hidden="true"></i> sign in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login"><i class="fa fa-sign-in" aria-hidden="true"></i> log in</a>
+            </li>
+          </ul>
+        <%}%>
       </nav>
   </div>
   <div id="header">
