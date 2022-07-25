@@ -19,6 +19,17 @@ for(let i=0;i<categories_item.length;i++){
   })
 }
 
+// show or hide password
+document.querySelectorAll('.password-display').forEach((item, i) => {
+  item.addEventListener('click',(event)=>{
+    item.classList.toggle("fa-eye");
+    item.classList.toggle("fa-eye-slash");
+    const type=(event.target).parentElement.parentElement.children[0].getAttribute("type") === "password" ? "text" : "password";
+    (event.target).parentElement.parentElement.children[0].setAttribute("type", type);
+  });
+});
+
+
 // for toast massege
 $('.toast').toast("show");
 

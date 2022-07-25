@@ -1,3 +1,10 @@
+.password-display{
+  position:absolute;
+  right:0.8rem;
+  top:0.6rem;
+  z-index:10;
+  cursor:pointer;
+}
 .gradient-custom-2 {
 /* fallback for old browsers */
 background: #e4e7ed;
