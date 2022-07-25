@@ -19,6 +19,7 @@ for(let i=0;i<categories_item.length;i++){
   })
 }
 
+// for toast massege
 $('.toast').toast("show");
 
 // slider

@@ -72,14 +72,14 @@
     animation-delay: 0ms;
 }
 
-.card{
+.row_posts .card{
   max-width: 13rem;
   text-align: center;
   border: 1px Solid #D3D3D3	;
   padding: 10px;
   line-height: 30px;
 }
-.card:hover{
+.row_posts .card:hover{
   border-color: #c90124;
   border-width: 2px;
 }
@@ -90,11 +90,11 @@
   margin: -12px -17px !important;
   border-radius: 5px !important;
 }
-.card:hover .div-add{
+.row_posts .card:hover .div-add{
   display: flex;
   justify-content: center;
 }
-.card-title{
+.row_posts .card-title{
   font-weight: bold !important;
   display: block;
 }
@@ -106,12 +106,12 @@
   background-color: #c90124 !important;
   border: 2px #c90124 Solid !important;
 }
-.card:hover .div-add .button-addToCart:hover{
+.row_posts .card:hover .div-add .button-addToCart:hover{
   background-color: White !important;
   color: #c90124 !important;
   font-weight: bold !important;
 }
-.card:hover .div-add .button-addToCart:hover .icon-cart{
+.row_posts .card:hover .div-add .button-addToCart:hover .icon-cart{
   color: #c90124;
   display: inline;
 }

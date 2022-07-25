@@ -3,13 +3,12 @@
     <div class="toast-header" style="background-color:green;">
 
       <strong class="mr-auto" style="color:white;">success</strong>
-      <small style="color:white;">11 mins ago</small>
       <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="toast-body">
-      Your sign in was successful.
+      Your sign in was successful.<br>Please login account...
    </div>
   </div>
 <%}%>
@@ -18,7 +17,6 @@
     <div class="toast-header" style="background-color:green;">
 
       <strong class="mr-auto" style="color:white;">success</strong>
-      <small style="color:white;">11 mins ago</small>
       <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -33,7 +31,6 @@
     <div class="toast-header" style="background-color:#c90124;">
 
       <strong class="mr-auto" style="color:white;">failed</strong>
-      <small style="color:white;">11 mins ago</small>
       <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -48,13 +45,26 @@
     <div class="toast-header" style="background-color:gray;">
 
       <strong class="mr-auto" style="color:white;">success</strong>
-      <small style="color:white;">11 mins ago</small>
       <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="toast-body">
       Your log out was successful.
+   </div>
+  </div>
+<% } %>
+<% if(stateToast=="repeat"){%>
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: absolute; top: 1rem; right: 1rem;">
+    <div class="toast-header" style="background-color:#FFC000;">
+
+      <strong class="mr-auto" style="color:white;">Warning!</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      This email address is already being used.
    </div>
   </div>
 <% } %>
