@@ -15,37 +15,49 @@
 
       <% for(let i=10*(parseInt(indexProduct)-1);i<(10*parseInt(indexProduct)) && i<postsinf.length;i++ ) {%>
         <div class="card col-lg-4">
-          <title style="display:none;"><%=postsinf[i].id %></title>
-          <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
-          <div class="card-body">
-            <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
-            <h4 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h4> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
-            <span class="stars">
-                  <svg height="20" >
-                    <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
-                  </svg>
-                  <span class="fa fa-star checked-star"></span>
-            <span class="fa fa-star checked-star"></span>
-            <span class="fa fa-star checked-star"></span>
-            <i class='fa fa-star' style='color: #D3D3D3;'></i>
-            <i class='fa fa-star' style='color: #D3D3D3;'></i>
-            </span>
+          <form class="" action="/posts/<%=postsinf[i].id%>" method="post">
+            <title style="display:none;"><%=postsinf[i].id %></title>
+            <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
+            <div class="card-body">
+              <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
+              <h4 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h4> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
+              <span class="stars">
+                    <svg height="20" >
+                      <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
+                    </svg>
+                    <span class="fa fa-star checked-star"></span>
+              <span class="fa fa-star checked-star"></span>
+              <span class="fa fa-star checked-star"></span>
+              <i class='fa fa-star' style='color: #D3D3D3;'></i>
+              <i class='fa fa-star' style='color: #D3D3D3;'></i>
+              </span>
 
-            <div class="icons-post">
-              <span class="bg-icons"><i class='fa fa-heart'></i></span>
-              <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
-              <span class="bg-icons"><i class='fa fa-eye'></i></span>
-            </div>
+              <div class="icons-post">
+                <span class="bg-icons"><i class='fa fa-heart'></i></span>
+                <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
+                <span class="bg-icons"><i class='fa fa-eye'></i></span>
+              </div>
 
-          </div>
-          <div class="div-add">
-            <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
-            <div class="plus-minus" style="display:none;">
-              <i class="fa fa-minus minus-button" aria-hidden="true"></i>
-              <input type="button" disabled name="" value="1" class="range-product">
-              <i class="fa fa-plus plus-button" aria-hidden="true"></i>
             </div>
-          </div>
+            <div class="div-add">
+              <%if(user_log=="" || user_log.cart.length==0){%>
+                <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+              <%}else{%>
+              <%for(let k=0;k<user_log.cart.length;k++){%>
+              <%  if(user_log.cart[k].product.id==postsinf[i].id){%>
+                  <div class="plus-minus">
+                    <i class="fa fa-minus minus-button" aria-hidden="true"></i>
+                    <input type="button" disabled name="" value="<%=user_log.cart[k].count%>" class="range-product">
+                    <i class="fa fa-plus plus-button" aria-hidden="true"></i>
+                  </div>
+                  <%break%>
+                <%}else if(k==user_log.cart.length-1){%>
+                  <button type="submit" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+                <%}%>
+              <%}%>
+            <%}%>
+            </div>
+          </form>
         </div>
         <% } %>
 
@@ -134,37 +146,49 @@
 
           <% for(let i=0;i<postsinf.length;i++ ) {%>
             <div class="card col-lg-2 card_slider" style="display: none;">
-              <title style="display:none;"><%=postsinf[i].id %></title>
-              <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
-              <div class="card-body">
-                <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
-                <h5 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h5> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
-                <span class="stars">
-                  <svg height="20" >
-                    <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
-                  </svg>
+              <form class="" action="/posts/<%=postsinf[i].id%>" method="post">
+                <title style="display:none;"><%=postsinf[i].id %></title>
+                <img src=<%=postsinf[i].image %> class="card-img-top" alt="bag" style="height:180px;"/>
+                <div class="card-body">
+                  <h10 class="card-title"><%=postsinf[i].title.substring(0,25) %></h10>
+                  <h5 style="display:inline;color:#FF4D4D;">$<%= postsinf[i].price %></h5> <strike class="text-muted"> $<%= postsinf[i].price %> </strike>
+                  <span class="stars">
+                    <svg height="20" >
+                      <line x1="10" y1="0" x2="170" y2="0" style="stroke:#D3D3D3;stroke-width:2" />
+                    </svg>
+                    <span class="fa fa-star checked-star"></span>
                   <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-                <i class='fa fa-star' style='color: #D3D3D3;'></i>
-                <i class='fa fa-star' style='color: #D3D3D3;'></i>
-                </span>
+                  <span class="fa fa-star checked-star"></span>
+                  <i class='fa fa-star' style='color: #D3D3D3;'></i>
+                  <i class='fa fa-star' style='color: #D3D3D3;'></i>
+                  </span>
 
-                <div class="icons-post">
-                  <span class="bg-icons"><i class='fa fa-heart'></i></span>
-                  <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
-                  <span class="bg-icons"><i class='fa fa-eye'></i></span>
-                </div>
+                  <div class="icons-post">
+                    <span class="bg-icons"><i class='fa fa-heart'></i></span>
+                    <span class="bg-icons"><i class='fas fa-exchange-alt'></i></span>
+                    <span class="bg-icons"><i class='fa fa-eye'></i></span>
+                  </div>
 
-              </div>
-              <div class="div-add">
-                <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
-                <div class="plus-minus" style="display:none;">
-                  <i class="fa fa-minus minus-button" aria-hidden="true"></i>
-                  <input type="button" disabled name="" value="1" class="range-product">
-                  <i class="fa fa-plus plus-button" aria-hidden="true"></i>
                 </div>
-              </div>
+                <div class="div-add">
+                  <%if(user_log=="" || user_log.cart.length==0){%>
+                    <button type="button" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+                  <%}else{%>
+                  <%for(let k=0;k<user_log.cart.length;k++){%>
+                  <%  if(user_log.cart[k].product.id==postsinf[i].id){%>
+                      <div class="plus-minus">
+                        <i class="fa fa-minus minus-button" aria-hidden="true"></i>
+                        <input type="button" disabled name="" value="<%=user_log.cart[k].count%>" class="range-product">
+                        <i class="fa fa-plus plus-button" aria-hidden="true"></i>
+                      </div>
+                      <%break%>
+                    <%}else if(k==user_log.cart.length-1){%>
+                      <button type="submit" name="button" class="btn btn-danger button-addToCart" ><i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>   ADD TO CART</button>
+                    <%}%>
+                  <%}%>
+                <%}%>
+                </div>
+              </form>
             </div>
             <% } %>
 
@@ -219,18 +243,7 @@
     </div>
   </section>
 
-  <div id="pleaseLogin" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: absolute; top: 1rem; right: 1rem;">
-    <div class="toast-header" style="background-color:#FFC000;">
 
-      <strong class="mr-auto" style="color:white;">Warning!</strong>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"  style="color:white;">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="toast-body">
-      Please Login first...
-   </div>
-  </div>
 <% include toast.ejs %>
 
   <!-- Footer -->

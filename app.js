@@ -93,7 +93,8 @@ app.post("/signup", function(req , res){
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        password: md5(req.body.password)
+        password: md5(req.body.password),
+        cart: []
       });
       NewUser.save(function(err){
         if(err){
@@ -111,7 +112,6 @@ app.post("/signup", function(req , res){
 });
 
 app.get("/", function ( req , res){
-
   Products.find(function (err , productsDetails){
     if(err){
       res.send(err);
@@ -123,6 +123,109 @@ app.get("/", function ( req , res){
       stateToast="";
     }
   });
+});
+app.post("/posts/:postid/:action", function ( req , res){
+  if(user_log==""){
+    stateToast="pleaseLogin";
+    res.redirect("/");
+  }
+  else {
+      if(user_log.cart.length==0){
+        var product;
+        Products.findOne({ id: req.params.postid }, function(err,findProduct){
+          if(err){
+            console.log(err);
+            res.redirect("/login");
+          }
+          else{
+            product= findProduct;
+            const product_cart={ product: product ,count:'1' };
+            user_log.cart.push(product_cart);
+            Users.updateOne(
+              { email: user_log.email },
+              { $set : { cart : user_log.cart } },
+              function(err,findUser){
+              if(err){
+                console.log(err);
+                res.redirect("/login");
+              }
+              else{
+                res.redirect("/");
+              }
+            });
+          }
+        });
+      }
+      else{
+        for(let i=0;i<user_log.cart.length;i++)
+        {
+          if(user_log.cart[i].product.id==req.params.postid){
+            if(req.params.action=="add"){
+              user_log.cart[i].count=String(parseInt(user_log.cart[i].count)+1);
+              Users.updateOne(
+                { email: user_log.email },
+                { $set : { cart : user_log.cart } },
+                function(err,findUser){
+                if(err){
+                  console.log(err);
+                  res.redirect("/login");
+                }
+                else{
+                  res.redirect("/");
+                }
+              });
+            }
+            else{
+              user_log.cart[i].count=String(parseInt(user_log.cart[i].count)-1);
+              if(user_log.cart[i].count=='0')
+              {
+                user_log.cart.splice(i, 1);
+              }
+              Users.updateOne(
+                { email: user_log.email },
+                { $set : { cart : user_log.cart } },
+                function(err,findUser){
+                if(err){
+                  console.log(err);
+                  res.redirect("/login");
+                }
+                else{
+                  res.redirect("/");
+                }
+              });
+            }
+            break;
+          }
+          else if(i==user_log.cart.length-1)
+          {
+            var product;
+            Products.findOne({ id: req.params.postid }, function(err,findProduct){
+              if(err){
+                console.log(err);
+                res.redirect("/login");
+              }
+              else{
+                product= findProduct;
+                const product_cart={ product: product ,count:'1' };
+                user_log.cart.push(product_cart);
+                Users.updateOne(
+                  { email: user_log.email },
+                  { $set : { cart : user_log.cart } },
+                  function(err,findUser){
+                  if(err){
+                    console.log(err);
+                    res.redirect("/login");
+                  }
+                  else{
+                    res.redirect("/");
+                  }
+                });
+              }
+            });
+          }
+        }
+      }
+    }
 });
 app.get("/pages/:pageid", function ( req , res){
   Products.find(function (err , productsDetails){
