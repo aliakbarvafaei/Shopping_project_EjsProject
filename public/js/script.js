@@ -31,7 +31,7 @@ document.querySelectorAll('.password-display').forEach((item, i) => {
 
 
 // for toast massege
-$('.toast').toast("show");
+$('.autoToast').toast("show");
 
 // slider
 document.querySelector('.pre-button').addEventListener('click', function handleClick(event) {
@@ -276,60 +276,67 @@ document.querySelector('#cart-icon').addEventListener('click', function handleCl
 /* add product to cart */
 document.querySelectorAll('.button-addToCart').forEach((item, i) => {
   item.addEventListener('click',(event)=>{
-
-    /* hide button-addToCart and show numbers */
-    var x=false;
-    for(let i=0;i<selected_products.length;i++)
-    {
-      if(selected_products[i].id== (((event.target).parentElement).parentElement).children[0].innerHTML)
+    const user = document.querySelector('#top-header').children[0].children[0].children;
+    if(user.length==2){
+      $(window).scrollTop(0);
+      $('#pleaseLogin').toast("show");
+    }
+    else{
+      console.log(user);
+      /* hide button-addToCart and show numbers */
+      var x=false;
+      for(let i=0;i<selected_products.length;i++)
       {
-        selected_products[i].quantity+=1;
+        if(selected_products[i].id== (((event.target).parentElement).parentElement).children[0].innerHTML)
+        {
+          selected_products[i].quantity+=1;
+          ((event.target).parentElement).children[1].style.display="flex";
+          item.style.display="none";
+          x=true;
+          break;
+        }
+      }
+      if(x==false){
+        const id_product= (((event.target).parentElement).parentElement).children[0].innerHTML;
+        const img_src= (((event.target).parentElement).parentElement).children[1].src;
+        const title_product= (((event.target).parentElement).parentElement).children[2].children[0].innerHTML;
+        const price_product= (((event.target).parentElement).parentElement).children[2].children[1].innerHTML;
+        selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
         ((event.target).parentElement).children[1].style.display="flex";
         item.style.display="none";
-        x=true;
-        break;
       }
-    }
-    if(x==false){
-      const id_product= (((event.target).parentElement).parentElement).children[0].innerHTML;
-      const img_src= (((event.target).parentElement).parentElement).children[1].src;
-      const title_product= (((event.target).parentElement).parentElement).children[2].children[0].innerHTML;
-      const price_product= (((event.target).parentElement).parentElement).children[2].children[1].innerHTML;
-      selected_products.push({ id:id_product, img:img_src, title:title_product, price:price_product.substring(1), quantity:parseInt(1) });
-      ((event.target).parentElement).children[1].style.display="flex";
-      item.style.display="none";
-    }
 
-    /* if product selected in main-product then update quantity of slider product */
-    if((((event.target).parentElement).parentElement).parentElement.parentElement.id=="main-products"){
-      document.querySelectorAll('.card_slider').forEach((items, i) => {
-          if(items.children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
-          {
-            if(items.children[3].children[0].style.display!="none")
+      /* if product selected in main-product then update quantity of slider product */
+      if((((event.target).parentElement).parentElement).parentElement.parentElement.id=="main-products"){
+        document.querySelectorAll('.card_slider').forEach((items, i) => {
+            if(items.children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
             {
-              items.children[3].children[0].style.display="none";
-              items.children[3].children[1].style.display="flex";
+              if(items.children[3].children[0].style.display!="none")
+              {
+                items.children[3].children[0].style.display="none";
+                items.children[3].children[1].style.display="flex";
+              }
+              else {
+                items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)+1;
+              }
+            }
+        });
+      }
+
+      /* if product selected in slider product then update quantity of main-product */
+      else{
+        var post_main_product=document.querySelector('#main-products').children[2].children;
+        for(let i=0;i<post_main_product.length;i++){
+          if(post_main_product[i].children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
+          {
+            if(post_main_product[i].children[3].children[0].style.display!="none")
+            {
+              post_main_product[i].children[3].children[0].style.display="none";
+              post_main_product[i].children[3].children[1].style.display="flex";
             }
             else {
-              items.children[3].children[1].children[1].value=parseInt(items.children[3].children[1].children[1].value)+1;
+              post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)+1;
             }
-          }
-      });
-    }
-
-    /* if product selected in slider product then update quantity of main-product */
-    else{
-      var post_main_product=document.querySelector('#main-products').children[2].children;
-      for(let i=0;i<post_main_product.length;i++){
-        if(post_main_product[i].children[0].innerHTML==(((event.target).parentElement).parentElement).children[0].innerHTML)
-        {
-          if(post_main_product[i].children[3].children[0].style.display!="none")
-          {
-            post_main_product[i].children[3].children[0].style.display="none";
-            post_main_product[i].children[3].children[1].style.display="flex";
-          }
-          else {
-            post_main_product[i].children[3].children[1].children[1].value=parseInt(post_main_product[i].children[3].children[1].children[1].value)+1;
           }
         }
       }

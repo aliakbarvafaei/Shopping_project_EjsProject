@@ -40,7 +40,7 @@
   flex-direction: row;
   justify-content: center;
   gap:15px;
-  padding: 2% 6%;
+  padding: 2% 10%;
 
 }
 .ToLeft {
@@ -87,7 +87,7 @@
   background-color: Black;
   display: none;
   padding: 4% 0%;
-  margin: -12px -17px !important;
+  margin: -0.8rem -0.7rem !important;
   border-radius: 5px !important;
 }
 .row_posts .card:hover .div-add{
