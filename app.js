@@ -44,6 +44,7 @@ app.post("/products",function (req , res) {
   });
 });
 
+var positionScroll=0;
 var stateToast="";
 var user_log="";
 
@@ -52,7 +53,7 @@ app.get("/login", function(req , res){
     user_log="";
     stateToast="Logout";
   }
-  res.render("login" , {stateToast: stateToast});
+  res.render("login" , {stateToast: stateToast,positionScroll: positionScroll});
   stateToast="";
 });
 app.post("/login", function(req , res){
@@ -75,7 +76,7 @@ app.post("/login", function(req , res){
   });
 });
 app.get("/signup", function(req , res){
-  res.render("signup");
+  res.render("signup",{positionScroll: positionScroll});
 });
 app.post("/signup", function(req , res){
   Users.findOne({ email: req.body.email }, function(err,findUser){
@@ -119,12 +120,14 @@ app.get("/", function ( req , res){
     else{
       var statePre="disabled",stateNext="";
       res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext,
-      stateToast: stateToast ,user_log: user_log});
+      stateToast: stateToast ,user_log: user_log,positionScroll: positionScroll});
+      positionScroll=0;
       stateToast="";
     }
   });
 });
-app.post("/posts/:postid/:action", function ( req , res){
+app.post("/posts/:postid/:action/:positionScroll", function ( req , res){
+  positionScroll=parseFloat(req.params.positionScroll);
   if(user_log==""){
     stateToast="pleaseLogin";
     res.redirect("/");
@@ -254,7 +257,8 @@ app.get("/home", function ( req , res){
     else{
       var statePre="disabled",stateNext="";
       res.render("frame" , {postsinf: productsDetails , indexProduct: 1, statePre: statePre, stateNext: stateNext,
-      stateToast: stateToast ,user_log: user_log});
+      stateToast: stateToast ,user_log: user_log,positionScroll: positionScroll});
+      positionScroll=0;
       stateToast="";
     }
   });
